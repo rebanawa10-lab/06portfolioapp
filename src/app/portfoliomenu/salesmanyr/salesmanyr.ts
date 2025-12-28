@@ -15,6 +15,8 @@ import { CommonModule } from '@angular/common';     // ngIf
 import { FormsModule } from "@angular/forms";   // ngModel, ngValue
 import { DataService } from '../../services/data-service';  // *** NEW 
 
+
+
 @Component({
   selector: 'app-salesmanyr', 
   imports: [CommonModule, FormsModule],
@@ -23,7 +25,9 @@ import { DataService } from '../../services/data-service';  // *** NEW
 })
 
 
-export class Salesmanyr implements AfterViewInit {
+export class Salesmanyr implements AfterViewInit, OnInit {
+
+  rows: any[] = [];  
 
   ChartInvDlyParaRef: any;  // <— Store chart reference
 
@@ -37,13 +41,34 @@ export class Salesmanyr implements AfterViewInit {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
-  // myChartInvParaChange(event: Event) {
-  //     const value = (event.target as HTMLSelectElement).value;
-  //     console.log('Selectx:', value); 
-  //   //   this.dynamicChartInvDlyPara();
-  // }
-  
 
+   ngOnInit(): void {
+
+       this.apiDataChartList();
+
+
+   }
+  // ts
+   async apiDataChartList(){
+
+      const url = this.apiData.getPortfolioSalemanYRURL();
+      const response2 = await fetch(url);   
+
+      const res2= await response2.json();
+      // this.rows = res2;
+
+      console.log(res2);
+
+      // API returns Chart.js format, transform it:
+      this.rows = res2.labels.map((label: string, i: number) => ({
+        labels: label,
+        data: res2.data[i]
+      }));
+
+      this.cdr.detectChanges();
+
+
+   }
 
 // WORKING:  
 // const response2 = await fetch('http://localhost:8080/api/portfolio/summaryyrurl');
@@ -77,10 +102,13 @@ export class Salesmanyr implements AfterViewInit {
             }
       });   
   }
+
   
   async ngAfterViewInit() {  
 
       this.apiDataChart();
+
+      // this.apiDataChartList();
 
   }
 
