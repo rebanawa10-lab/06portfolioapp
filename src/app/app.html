@@ -6,7 +6,7 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
+<!-- 
 <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
@@ -329,6 +329,8 @@
     </div>
   </div>
 </main>
+-->
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
@@ -339,4 +341,152 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
+
+<!--  Sidebar -->
+<mat-sidenav-container class="app-container">
+ <!--  <mat-sidenav #drawer mode="side" opened> -->
+
+    <mat-sidenav class="app-sidenav" #drawer 
+               [mode]="isSmallScreen ? 'over' : 'side'"
+               [opened]="!isSmallScreen">
+
+        <mat-toolbar>Menu</mat-toolbar>
+
+        <!-- 
+         <mat-nav-list>
+
+          <mat-list-item class="underline-hover">
+                <a [routerLink]="['/home']" routerLinkActive="is-active" class="menu-icons" >
+                    <mat-icon>house/mat-icon></mat-icon>
+                    <span>Home</span>
+                </a>
+            </mat-list-item>   
+           </mat-nav-list>
+        -->
+           
+
+
+       
+         <mat-nav-list>
+            <!-- Test
+            <mat-expansion-panel>
+                <mat-nav-list>
+                    <span>Test1 </span>
+                </mat-nav-list>
+                <mat-nav-list>
+                    <span>Test2 </span>
+                </mat-nav-list>
+
+            </mat-expansion-panel>
+            -->
+
+            <mat-list-item class="underline-hover">
+                <a [routerLink]="['/home']" routerLinkActive="is-active" class="menu-icons" >
+                    <mat-icon>house/mat-icon></mat-icon>
+                    <span>Home</span>
+                </a>
+            </mat-list-item>   
+
+            <!-- My Portfolio -->
+            <mat-list-item class="underline-hover">
+                <a [routerLink]="['/portfolio']" routerLinkActive="is-active" class="menu-icons" >
+                  <mat-icon>business_center</mat-icon>
+                  <span>My Portfolio</span>
+                </a>
+
+            </mat-list-item>
+
+            <!-- Portfolio Parent Item -->
+            <div class="menu-item-with-sub">
+                <mat-list-item class="underline-hover">
+                    <mat-icon matListIcon>business_center</mat-icon>Portfolio...
+                </mat-list-item>
+                      <!-- Sub Menu -->
+                      <div class="submenu">
+                          <mat-nav-list>                         
+                                <mat-list-item class="underline-hover">
+                                    <a [routerLink]="['/salesman']" routerLinkActive="is-active" class="menu-icons" >
+                                        <mat-icon>dashboard</mat-icon>
+                                        <span> Salesman Executive xx </span>
+                                        <!-- <span>{{ this.Salesman }}</span> -->
+                                    </a>
+                                </mat-list-item>
+
+                          </mat-nav-list>
+                      </div>
+            </div>
+
+            <!-- 
+            <mat-list-item>
+              <a [routerLink]="['/settings']" routerLinkActive="is-active" class="menu-icons" >
+                <mat-icon>settings</mat-icon>
+                <span>Settings</span>
+              </a>
+            </mat-list-item>
+            -->
+
+
+        </mat-nav-list>
+
+        
+        <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Panel title 1
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              Panel content #1
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Data API
+                  </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              
+              <a [routerLink]="['/salesman']" routerLinkActive="is-active" class="menu-icons" >
+                                        
+                                        <mat-icon>group</mat-icon>
+                                        <span> Sales executive </span>
+                                        <!-- <span>{{ this.Salesman }}</span> -->
+               </a>
+               <br>
+                <a [routerLink]="['/salesmanyr']" routerLinkActive="is-active" class="menu-icons" >
+                                        <mat-icon>dashboard</mat-icon>
+                                        <span> YTD Sales </span>
+                                        <!-- <span>{{ this.Salesman }}</span> -->
+               </a>
+
+
+            </mat-expansion-panel>
+        </mat-accordion>
+   </mat-sidenav>
+
+  <mat-sidenav-content>
+      <mat-toolbar>
+            <!-- <button mat-icon-button (click)="drawer.toggle()"> -->
+            <button mat-icon-button (click)="drawer.toggle()" >
+                <mat-icon>menu</mat-icon>
+            </button>
+            <!-- *ngIf="isSmallScreen", remove this in button   -->
+            <span>&nbsp;Application</span>
+      </mat-toolbar>
+
+      <div class="main-content">
+            <router-outlet></router-outlet>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+<!-- 
 <router-outlet />
+-->
