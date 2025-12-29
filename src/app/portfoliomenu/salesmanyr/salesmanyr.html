@@ -1,4 +1,4 @@
-<h1>YTD Sales</h1>
+<h1>Sales dashboard YTD</h1>
 
 <br>
 <table  class="tblBorder">
@@ -18,9 +18,9 @@
     <table class="tableAPI">
       <tbody>
           <tr>
-          <th class="tableTH">Year</th>
-          <th class="tableTH">Amount</th>
-         </tr>   
+            <th class="tableTH">Year</th>
+            <th class="tableTH">Amount</th>
+          </tr>   
           <tr *ngFor="let item of rows">  
             <td class="tableTDLeft">  {{ item.labels }}    </td> 
             <td class="tableTDRight">  {{ item.data | number:'1.2-2' }}  </td> 

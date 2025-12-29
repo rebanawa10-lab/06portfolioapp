@@ -1,0 +1,44 @@
+<h1>Executive list</h1>
+Search Sales executive name and country code via <i>search engine optimation</i> (SEO).<br><br><br>
+
+
+<strong>Search:</strong>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline" [floatLabel]="'always'">
+        <mat-label>Name: </mat-label>
+        <input matInput [(ngModel)]="gUsername" placeholder="Enter name" (ngModelChange)="onSearch($event)" >
+    </mat-form-field>
+    &nbsp;&nbsp;
+    <mat-form-field appearance="outline" [floatLabel]="'always'">
+        <mat-label>Country code: </mat-label>
+        <input matInput [(ngModel)]="gCountry" placeholder="Enter country code" (ngModelChange)="onSearch($event)" >
+    </mat-form-field>
+
+<br>
+<br><strong>Output:</strong>
+   
+     &nbsp;&nbsp; &nbsp;&nbsp;
+    <table class="tableAPI">
+        <tbody>
+            <tr>
+                <th class="tableTH">#</th>
+                <th class="tableTH">Name</th>
+                <th class="tableTH">Country code</th>
+            </tr> 
+            @for (usersA of postsANY; track usersA.username; let index = $index ) {       
+                    <tr>
+                        <td class="tableTD">{{ index+1 }}. </td>
+                        <td class="tableTD">{{ usersA.username }} </td>
+
+                        <td class="tableTD">{{ usersA.country }} </td>
+                    </tr>
+                
+            }    @empty {
+                    <tr>
+                        <td colspan="3" class="tableTDCenter"> < Empty list of executives > </td>
+                    </tr>
+            
+             }
+        </tbody>
+    </table>
+

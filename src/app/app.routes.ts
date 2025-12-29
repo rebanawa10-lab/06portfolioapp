@@ -8,7 +8,11 @@ import { Routes } from '@angular/router';
 import { Home } from './home/home';
 
 import { Salesman } from  './portfoliomenu/salesman/salesman';
+import { Salesseo } from  './portfoliomenu/salesseo/salesseo';
 import { Salesmanyr } from  './portfoliomenu/salesmanyr/salesmanyr';
+
+
+
 
 export const routes: Routes = [
 
@@ -19,6 +23,7 @@ export const routes: Routes = [
     // in a lazy module
     // { path: '', loadChildren: () => import('./home/home').then(m => m.Home) },
     { path: 'salesman', component: Salesman }, 
+    { path: 'salesseo', component: Salesseo }, 
     { path: 'salesmanyr', component: Salesmanyr  }, 
     { path: '**', component: Home }
 
