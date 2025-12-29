@@ -1,11 +1,16 @@
-
-
-.tableAPI {
-    width: 550px;
-    border-collapse: collapse;
+:host {
+  display: block;
+  padding: 16px;
 }
 
-/* width: 450px; */
+.popup-dialog .mat-mdc-dialog-container {
+  padding: 0;
+}
+
+.tableAPI {
+    width: 400px;
+    border-collapse: collapse;
+}
 
 .table th, .table td {
     padding: 8px;
@@ -25,7 +30,15 @@
   border: 1px solid #ccc;
   border-color: black;
   height: 5px;
-  width: 70px;
+  width: 130px;
+}
+
+.tableTDLeft2 {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-color: black;
+  height: 5px;
+  width: 170px;
 }
 
 .tableTDRight {

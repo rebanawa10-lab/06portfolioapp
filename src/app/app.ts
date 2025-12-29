@@ -21,6 +21,17 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 // Menu down section
 import { MatExpansionModule } from '@angular/material/expansion';
 
+// Popup
+import { ActivatedRoute, NavigationEnd } from '@angular/router';
+import { OnInit } from '@angular/core';
+import { Inject, PLATFORM_ID, } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { filter } from 'rxjs/operators';
+
+
+// Browser Title
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-root',
@@ -51,19 +62,48 @@ import { MatExpansionModule } from '@angular/material/expansion';
 })
 
 
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('06portfolioapp');
 
   // Sidebar responsive
   isSmallScreen = false;
 
+   isPopup = false;
+  // isPopup = !!window.opener;
 
   constructor(
-      private router: Router,        // Nested Menu
-      private breakpointObserver: BreakpointObserver
-  ) {}
+      private router: Router,         // Nested Menu
+      private breakpointObserver: BreakpointObserver,
+
+      private titleService: Title     // Browser Title
+      
+  ) {
+
+    // Popup
+    this.router.events
+      .pipe(filter(e => e instanceof NavigationEnd))
+      .subscribe(() => {
+        this.isPopup = this.router.url.includes('popup=1');
+      });
 
 
+  }
+
+  // popup
+  ngOnInit(): void {
+     // this.isPopup = !!window.opener;
+
+    // if (isPlatformBrowser(this.platformId)) {
+    //   this.isPopup = !!window.opener;
+    // }
+
+    this.titleService.setTitle('REBANAWA10 - Angular Portfolio');
+
+    if (typeof window !== 'undefined') {
+      this.isPopup = !!window.opener;
+    }
+
+  }
 
   navigateTo(routeUrl: string): void {
       this.router.navigate([routeUrl]);

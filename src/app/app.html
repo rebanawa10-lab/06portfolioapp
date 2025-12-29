@@ -343,7 +343,7 @@
 
 
 <!--  Sidebar -->
-<mat-sidenav-container class="app-container">
+<mat-sidenav-container class="app-container" *ngIf="!isPopup">
  <!--  <mat-sidenav #drawer mode="side" opened> -->
 
     <mat-sidenav class="app-sidenav" #drawer 
@@ -444,18 +444,16 @@
         <mat-accordion>
             <mat-expansion-panel>
               <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Data API
-                  </mat-panel-title>
+                  <mat-panel-title>API Data</mat-panel-title>
               </mat-expansion-panel-header>
-
-              
+          
               <a [routerLink]="['/salesman']" routerLinkActive="is-active" class="menu-icons" >
                                         
                                         <mat-icon>group</mat-icon>
                                         <span> Sales executive </span>
                                         <!-- <span>{{ this.Salesman }}</span> -->
                </a>
+
                <br>
                <a [routerLink]="['/salesmanyr']" routerLinkActive="is-active" class="menu-icons" >
                                         <mat-icon>dashboard</mat-icon>
@@ -468,6 +466,14 @@
                                         <mat-icon>fact_check</mat-icon>
                                         <span> Executive list </span>                                     
                </a>
+
+<!-- 
+                 <br>
+                <a [routerLink]="['/salesmandtl']" routerLinkActive="is-active" class="menu-icons" >                                 
+                                        <mat-icon>fact_check</mat-icon>
+                                        <span> Load Executive details </span>                                     
+               </a>
+-->
 
 
             </mat-expansion-panel>
@@ -489,6 +495,11 @@
       </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+
+<ng-container *ngIf="isPopup">
+  <router-outlet></router-outlet>
+</ng-container>
 
 
 
