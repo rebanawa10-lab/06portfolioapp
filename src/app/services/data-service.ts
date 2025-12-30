@@ -62,7 +62,7 @@ export class DataService {
   }
 
 
-  // Dashboard 
+  // Dashboard Chart Line
   getPortfolioSalemanYR(): Observable<any[]> {
     return this.http.get<any[]>(this.apiURLPortfolioSalemanYr);
   }

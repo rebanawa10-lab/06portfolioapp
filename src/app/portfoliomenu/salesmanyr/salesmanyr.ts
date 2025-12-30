@@ -88,7 +88,7 @@ export class Salesmanyr implements AfterViewInit, OnInit {
             data: {
               labels: res2.labels,    // Dynamic labels
               datasets: [{
-                label: "YTD Sales",
+                label: "YTD Sales in Line Chart",
                 data: res2.data,      // Dynamic data
                 borderWidth: 1
               }]
@@ -103,12 +103,48 @@ export class Salesmanyr implements AfterViewInit, OnInit {
       });   
   }
 
+  async apiDataChartBar(){
+
+     if (!this.isBrowser || typeof window === 'undefined') return;
+
+      const url = this.apiData.getPortfolioSalemanYRURL();
+      const response2 = await fetch(url);   
+
+      const res2= await response2.json();
+      const ctx2 = document.getElementById('apiDataChartBar') as HTMLCanvasElement;   
+      new Chart(ctx2, {
+            type: 'bar',
+            data: {
+              labels: res2.labels,    // Dynamic labels
+              datasets: [{
+                label: "YTD Sales in Bar Chart",
+                data: res2.data,      // Dynamic data
+                backgroundColor: 'hsla(307, 82%, 57%, 1.00)',   // bar fill
+                borderColor: 'hsla(307, 82%, 57%, 1.00)',         // bar border
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                      x: {
+                        reverse: false     // <<< right-to-left
+                      }
+                    }
+            }
+      });   
+
+  }
+
   
   async ngAfterViewInit() {  
 
+      if (!this.isBrowser) return;
+
+      const Chart = (await import('chart.js/auto')).default;
+
       this.apiDataChart();
 
-      // this.apiDataChartList();
+      this.apiDataChartBar();
 
   }
 
