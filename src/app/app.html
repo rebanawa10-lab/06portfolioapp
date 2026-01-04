@@ -387,7 +387,8 @@
                 </a>
             </mat-list-item>   
 
-            <!-- My Portfolio -->
+            <!-- 
+            // My Portfolio 
             <mat-list-item class="underline-hover">
                 <a [routerLink]="['/portfolio']" routerLinkActive="is-active" class="menu-icons" >
                   <mat-icon>business_center</mat-icon>
@@ -395,26 +396,26 @@
                 </a>
 
             </mat-list-item>
-
-            <!-- Portfolio Parent Item -->
+           
+            // Portfolio Parent Item 
             <div class="menu-item-with-sub">
                 <mat-list-item class="underline-hover">
                     <mat-icon matListIcon>business_center</mat-icon>Portfolio...
                 </mat-list-item>
-                      <!-- Sub Menu -->
+                      // Sub Menu 
                       <div class="submenu">
                           <mat-nav-list>                         
                                 <mat-list-item class="underline-hover">
                                     <a [routerLink]="['/salesman']" routerLinkActive="is-active" class="menu-icons" >
                                         <mat-icon>dashboard</mat-icon>
-                                        <span> Salesman Executive xx </span>
-                                        <!-- <span>{{ this.Salesman }}</span> -->
+                                        <span> Salesman Executive xx </span>                            
                                     </a>
                                 </mat-list-item>
-
                           </mat-nav-list>
                       </div>
             </div>
+            -->
+
 
             <!-- 
             <mat-list-item>
@@ -430,19 +431,30 @@
 
         
         <mat-accordion>
-            <mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Panel title 1
+                  CRUD
                 </mat-panel-title>
               </mat-expansion-panel-header>
+               <!-- 
+               <a [routerLink]="['/usercomponent']" routerLinkActive="is-active" class="menu-icons" >                               
+                                        <mat-icon>group</mat-icon>
+                                        <span> User </span>                        
+               </a>
+               <br>
+               -->
+               <a [routerLink]="['/usersinfo']" routerLinkActive="is-active" class="menu-icons" >                               
+                                        <mat-icon>group</mat-icon>
+                                        <span> Users data </span>                        
+               </a>
+               <br>
 
-              Panel content #1
             </mat-expansion-panel>
         </mat-accordion>
 
         <mat-accordion>
-            <mat-expansion-panel>
+            <mat-expansion-panel [expanded]="true">
               <mat-expansion-panel-header>
                   <mat-panel-title>API Data</mat-panel-title>
               </mat-expansion-panel-header>

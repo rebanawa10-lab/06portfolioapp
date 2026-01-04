@@ -46,9 +46,10 @@ export class Salesmanyr implements AfterViewInit, OnInit {
 
        this.apiDataChartList();
 
-
    }
-  // ts
+
+
+   // ts
    async apiDataChartList(){
 
       const url = this.apiData.getPortfolioSalemanYRURL();
@@ -72,7 +73,7 @@ export class Salesmanyr implements AfterViewInit, OnInit {
 
 // WORKING:  
 // const response2 = await fetch('http://localhost:8080/api/portfolio/summaryyrurl');
-  async apiDataChart(){
+  async apiDataChartLine(){
       // if (!this.isBrowser) return;  
       // if (typeof window === 'undefined') return;  
 
@@ -82,7 +83,7 @@ export class Salesmanyr implements AfterViewInit, OnInit {
       const response2 = await fetch(url);   
 
       const res2= await response2.json();
-      const ctx2 = document.getElementById('apiDataChart') as HTMLCanvasElement;   
+      const ctx2 = document.getElementById('apiDataChartLine') as HTMLCanvasElement;   
       new Chart(ctx2, {
             type: 'line',
             data: {
@@ -138,13 +139,20 @@ export class Salesmanyr implements AfterViewInit, OnInit {
   
   async ngAfterViewInit() {  
 
+      // if (!this.isBrowser) return;
+
+      // const Chart = (await import('chart.js/auto')).default;
+
+      // this.apiDataChartLine();
+
+      // this.apiDataChartBar();
+
+
       if (!this.isBrowser) return;
+      await this.apiDataChartLine();
 
-      const Chart = (await import('chart.js/auto')).default;
+      await this.apiDataChartBar();
 
-      this.apiDataChart();
-
-      this.apiDataChartBar();
 
   }
 

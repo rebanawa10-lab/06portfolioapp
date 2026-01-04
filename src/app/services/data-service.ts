@@ -26,7 +26,7 @@ export class DataService {
   // Salesman detail
   private apiURLPortfolioSalemanDtl = `${environment.apiUrl}/api/portfolio/salesmandtl`;
 
-
+  // Dashboard
   private apiURLPortfolioSalemanYr = `${environment.apiUrl}/api/portfolio/summaryyr`;
      
   
@@ -62,12 +62,12 @@ export class DataService {
   }
 
 
-  // Dashboard Chart Line
+  // Dashboard Chart Line / Bar
   getPortfolioSalemanYR(): Observable<any[]> {
     return this.http.get<any[]>(this.apiURLPortfolioSalemanYr);
   }
 
-
+  // Dashboard Chart Data
   getPortfolioSalemanYRURL(): string {
     return this.apiURLPortfolioSalemanYrURL.toString();
   }
